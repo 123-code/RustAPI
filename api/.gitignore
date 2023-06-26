@@ -13,8 +13,10 @@ Cargo.lock.orig
 .vscode/
 .idea/
 *.swp
+
 *~
 
 # OS-specific files
 .DS_Store
 Thumbs.db
+.env/
