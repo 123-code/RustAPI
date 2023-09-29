@@ -10,5 +10,12 @@ edition = "2021"
 actix-rt = "2.8.0"
 actix-web = "4.3.1"
 serde = {version="1.0.104",features=["derive"]}
+diesel = { version = "2.1", features = ["postgres"] }
 dotenv = "0.15.0"
-config = "0.13.0"
+r2d2 = "0.8.9"
+r2d2-diesel = "1.0.0"
+config = "0.13.3"
+openssl = "0.10"
+postgres = "0.19.7"
+[lib]
+path = "lib.rs"

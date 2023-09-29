@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../.cursor-tutor"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"rust-analyzer.linkedProjects": [
+			"./api/Cargo.toml",
+			"./api/Cargo.toml"
+		]
+	}
+}
