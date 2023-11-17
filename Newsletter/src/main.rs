@@ -1,5 +1,5 @@
 use actix_web::{
-    web,App,HttpRequest,HttpServer,Responder
+    web,App,HttpRequest,HttpServer,Responder,HttpResponse
 };
 
 
@@ -8,7 +8,7 @@ let name = req.match_info().get("name").unwrap_or("World");
 format!("Hello:{}!",&name)
 }
 
-async fn health_check(req:HttpRequest)->impl Responder{
+async fn health_check(_req:HttpRequest)->impl Responder{
     HttpResponse::Ok()
 }
 
