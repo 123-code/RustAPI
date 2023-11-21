@@ -20,3 +20,5 @@ Cargo.lock.orig
 .DS_Store
 Thumbs.db
 .env/
+
+debug
