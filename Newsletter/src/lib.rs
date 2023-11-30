@@ -17,7 +17,7 @@ pub fn run(listener:TcpListener) -> Result<Server,std::io::Error>{
 
 })
 
-    .bind("127.0.0.1:8000")?
+.listen(listener)?
     .run();
 Ok(server)
 }
