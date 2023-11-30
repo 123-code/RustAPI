@@ -3,11 +3,14 @@ use actix_web::{
 };
 use actix_web::dev::Server;
 
+use std::net::TcpListener;
+
 async fn health_check(_req:HttpRequest)->HttpResponse{
  HttpResponse::Ok().finish()
 }
 
-pub fn run() -> Result<Server,std::io::Error>{
+
+pub fn run(listener:TcpListener) -> Result<Server,std::io::Error>{
     let server = HttpServer::new(||{
     App::new()
     .route("/health_check",web::get().to(health_check))
