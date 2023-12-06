@@ -5,9 +5,7 @@ Cargo.lock
 # Generated documentation
 /target/doc/
 
-# Build output
-Cargo.toml.orig
-Cargo.lock.orig
+
 
 # Editor-specific files
 .vscode/
@@ -15,8 +13,9 @@ Cargo.lock.orig
 *.swp
 
 *~
-
+ 
 # OS-specific files
 .DS_Store
 Thumbs.db
 .env/
+debug
