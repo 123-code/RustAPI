@@ -1,7 +1,7 @@
 fn spawn_app()->std::io::Result<()>{
     let listener = TcpListener::bind("127.0.0.1:0").expect("Error encontrando pueto");
     // traer el puerto asignado po os 
-    let port + listener.local_addr().unwrap().port();
+    let port = listener.local_addr().unwrap().port();
     let server = zero2prod::run(listener).expect("error binding address");
     let _ = tokio::spawn(server);
     format!("http://127.0.0.1:{}",port)
@@ -30,7 +30,7 @@ assert_eq!(Some(0),response.content_length());
 
 #[actix_rt::test]
 
-async fn subscribe_returns_a_200_for_valid_-form_data(){
+async fn subscribe_returns_a_200_for_valid_form_data(){
     let app_address = spawn_app();
     let client = reqwest::Client::new();
     let body = "name=le%20guin&email=ursula_le_guin%40gmail.com";
@@ -39,9 +39,9 @@ async fn subscribe_returns_a_200_for_valid_-form_data(){
     .header("Content-Type","application/x-www-form-urlencoded")
     .body(body)
     .send()
-    .await 
+    .await; 
 
-    expect("Failed to execute")
+    expect("Failed to execute");
 
     assert_eq!(200,response.status().as_u16());
 }
@@ -52,7 +52,7 @@ async fn subscribe_returns_a_200_for_valid_-form_data(){
 #[actix_tr::test]
 
 
-async fn subscribe_returns_a_40_when_data_is_missing()[
+async fn subscribe_returns_a_40_when_data_is_missing(){
     let app_address = spawn_app();
     let client = reqwest::Client::new();
     let test_cases = vec![
@@ -83,4 +83,4 @@ async fn subscribe_returns_a_40_when_data_is_missing()[
 
 
 
-]
+}
