@@ -1,15 +1,18 @@
 use actix_web::{
     web, App, HttpRequest, HttpServer, HttpResponse
 };  
-
 use tokio_postgres::{NoTls, Error as PgError};
-
 use actix_web::dev::Server;
-
 use std::net::TcpListener;
+use dotenv::dotenv;
+use std::env;
+
+
 
 async fn handle_connection() -> Result<HttpResponse, PgError> {
-    let database_url = "";
+    let database_url = env::var("DATABASE_URL")
+        .expect("DATABASE_URL must be set in .env");
+
     let (client,connection) = tokio_postgres::connect(database_url,NoTls).await?;
     
     
@@ -17,10 +20,14 @@ async fn handle_connection() -> Result<HttpResponse, PgError> {
         if let Err(e) = connection.await {
             eprintln!("connection error: {}", e);
         }
+        else {
+            println!("Connected to db");
+        }
+     
     });
 
 
-    format!("Connected to db");
+    
 
 
     Ok(HttpResponse::Ok().finish())
@@ -34,7 +41,7 @@ async fn app_works()->HttpResponse{
   
 
 pub async fn run(listener:TcpListener) -> Result<Server,std::io::Error>{
-    let result = handle_connection().await;
+    handle_connection().await;
 
 
     //println!("{:?}",result.unwrap());
