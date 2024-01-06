@@ -1,8 +1,9 @@
 use actix_web::{
     web, App, HttpRequest, HttpServer, HttpResponse
-}; 
-use serde::{Deserialize, Serialize}; 
+};  
+
 use tokio_postgres::{NoTls, Error as PgError};
+
 use actix_web::dev::Server;
 use std::net::TcpListener;
 use dotenv::dotenv;
@@ -23,11 +24,8 @@ async fn save_data(form:web::Form<ProposalData>)->HttpResponse{
 }
 
 async fn handle_connection() -> Result<HttpResponse, PgError> {
-    dotenv().ok();
-    let database_url = env::var("DATABASE_URL")
-        .expect("DATABASE_URL must be set in .env");
-
-    let (client,connection) = tokio_postgres::connect(&database_url,NoTls).await?;
+    let database_url = "";
+    let (client,connection) = tokio_postgres::connect(database_url,NoTls).await?;
     
     
     tokio::spawn(async move {
